@@ -1,7 +1,7 @@
 from collections import Counter
 
 def read_input(input_file):
-    with open("input") as f:
+    with open("input_in") as f:
         data = f.read().splitlines()
     return data
 
@@ -26,8 +26,7 @@ hand_types = {"Five of a kind": [],      # example: 55555
 
 
 def assign_type(length, hand, highest_card_score):
-    
-    # first sort into types based on length of hand (card)
+    #  the comparison should be based on length only
     if length == 5:
         hand_types.setdefault("High card", []).append(hand)
 
@@ -62,13 +61,12 @@ for hand in poker_hands:
     
     # Sort the cards by count and then by card value
     sorted_cards = sorted(card_counts.items(), key=lambda x: (x[1], x[0]), reverse=True)
-    # print(sorted_cards)
-
+    
+    highest_card_score = sorted_cards[0][1]
+    
     length = len(sorted_cards)
 
-    highest_card_score = sorted_cards[0][1] # Part 2
-
-    if ('J' not in hand): 
+    if ('J' not in hand): # example case: JJ532 -> it should still count as a one pair
         pass
 
     else:
@@ -83,7 +81,7 @@ for hand in poker_hands:
                 highest_card_score = highest_card_score + sorted_cards[1][1]
             # if the next highest card does not exist -> account for the case 'JJJJJ'
             except IndexError:
-                pass
+                pass 
 
 
     assign_type(length, hand, highest_card_score)
