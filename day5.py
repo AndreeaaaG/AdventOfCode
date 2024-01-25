@@ -52,6 +52,7 @@ def get_value_based_on_source_seed(source):
             i = [int(x) for x in i.split(' ')]
 
             source_interval = range(i[1], i[1] + i[2])
+            # print("source_interval", source_interval)
 
             # update source value for the next map
             if source_value in source_interval:
@@ -105,7 +106,6 @@ seed_ranges = get_seed_ranges()
 
 def generate_all_seeds(seed_ranges):
     # generate all seed numbers within those ranges
-
     all_seeds = []
 
     for start, length in seed_ranges:
