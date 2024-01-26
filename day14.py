@@ -1,7 +1,7 @@
 import numpy as np
 
 def read_input(input_file):
-    with open("input_in") as f:
+    with open("input") as f:
         data = f.read().splitlines()
     return data
 
